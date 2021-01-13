@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class comboChecker : MonoBehaviour
 {
@@ -12,19 +13,15 @@ public class comboChecker : MonoBehaviour
     //public string currentPunch = comboList[0];
 
 
-    void OnEnable()
-    {
-       // EventManager.onHit += bullseye;
-    }
-
-    void OnDisable()
-    {
-       // EventManager.onHit -= bullseye;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        EventManager eventManager = GetComponent<EventManager>();
+        eventManager.OnHit += bullseye;
+        if (eventManager == null)
+        {
+            Debug.LogError("ITA KAPUTTA!");
+        }
     }
 
     // Update is called once per frame
@@ -33,12 +30,15 @@ public class comboChecker : MonoBehaviour
         
     }
     // entfernt das getroffene Ziel aus dem Array
-    void bullseye ()
+    public void bullseye (object sender, EventArgs e)
     {
-        for (i = 0; i < 3; i++)
+        Debug.Log("geschafft!");
+        for (i = 0; i < 2; i++)
         {
             comboList[i] = comboList[i + 1];
         }
+        System.Array.Resize(ref comboList, comboList.Length - 1);
+        Debug.Log(comboList.Length);
         //currentPunch = comboList[0];
     }
 }
