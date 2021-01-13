@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class jabLTrigger : MonoBehaviour
 {
@@ -10,9 +11,9 @@ public class jabLTrigger : MonoBehaviour
         // man kann hier noch eine Fehler respons mit einem else statement hinzufügen.
         if (comboChecker.comboList[0] == "jab")
         {
-            //EventManager.hit();
+            EventManager eventManager = GetComponent<EventManager>();
+            eventManager.hit();
             Destroy(gameObject);
-            Debug.Log("Destroyed!!!");
         }
     }
  
