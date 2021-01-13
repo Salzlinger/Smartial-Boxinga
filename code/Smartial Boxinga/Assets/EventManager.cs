@@ -1,17 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-  /*  public delegate void hitManager();
-    public static event hitManager onHit;
+    public event EventHandler OnHit;
+
+    private void Start()
+    {
+        OnHit += Testing_OnHit;
+    }
+
+    private void Testing_OnHit(object sender, EventArgs e)
+    {
+        Debug.Log("Fire!");
+    }
 
     public void hit()
     {
-        if (onHit != null)
+        if (OnHit != null)
         {
-            onHit();
+            OnHit(this, EventArgs.Empty);
         }
-    } */
+    } 
 }
