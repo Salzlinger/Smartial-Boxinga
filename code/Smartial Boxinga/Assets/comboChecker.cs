@@ -6,22 +6,14 @@ using System;
 public class comboChecker : MonoBehaviour
 {
     // Array welches mit der auszuführenden Combo befüllt wird
-    int n = 3;
-    public static string[] comboList = new string [3] { "jab", "cross", "hook" };
-    int i = 0;
-    int pos = 0;
+    public static string[] comboList = { "jab", "cross", "hookr", "hookl", "upperl", "upperr" };
     //public string currentPunch = comboList[0];
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        EventManager eventManager = GetComponent<EventManager>();
-        eventManager.OnHit += bullseye;
-        if (eventManager == null)
-        {
-            Debug.LogError("ITA KAPUTTA!");
-        }
+      
     }
 
     // Update is called once per frame
@@ -30,10 +22,10 @@ public class comboChecker : MonoBehaviour
         
     }
     // entfernt das getroffene Ziel aus dem Array
-    public void bullseye (object sender, EventArgs e)
+    public void bullseye ()
     {
-        Debug.Log("geschafft!");
-        for (i = 0; i < 2; i++)
+        Debug.Log("Geschafft!");
+        for (int i = 0; i < comboList.Length - 1; i++)
         {
             comboList[i] = comboList[i + 1];
         }
