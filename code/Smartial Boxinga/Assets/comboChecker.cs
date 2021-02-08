@@ -6,7 +6,7 @@ using System;
 public class ComboChecker : MonoBehaviour
 {
     // Array welches mit der auszuführenden Combo befüllt wird
-    private int[] combolist = { 1, 3, 2, 4 };
+    private int[] combolist;
     public static ComboChecker combochecker;
 
     private void Awake()
@@ -19,6 +19,10 @@ public class ComboChecker : MonoBehaviour
         return combolist;
     }
 
+    public void setComboList (int[] newcombolist)
+    {
+        combolist = newcombolist;
+    }
 
     
     // Start is called before the first frame update
@@ -41,8 +45,8 @@ public class ComboChecker : MonoBehaviour
             combolist[i] = combolist[i + 1];
         }
         System.Array.Resize(ref combolist, combolist.Length - 1);
-        Debug.Log(combolist.Length);
-
+        Debug.Log("Anzahl restliche Ziele: " + combolist.Length);
+        Debug.Log("Nächstes Ziel: " + combolist[0]);
         if(combolist.Length > 0)
         {
             PlayingField.playingfield.showNextTarget();

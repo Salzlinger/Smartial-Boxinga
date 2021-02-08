@@ -27,6 +27,7 @@ public class PlayingField : MonoBehaviour
 
     public void showNextTarget()
     {
+        
         targets[ComboChecker.combochecker.getComboList()[0] - 1].SetActive(true);
     }
 
