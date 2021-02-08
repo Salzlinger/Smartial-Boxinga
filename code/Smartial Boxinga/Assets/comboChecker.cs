@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class comboChecker : MonoBehaviour
+public class ComboChecker : MonoBehaviour
 {
     // Array welches mit der auszuführenden Combo befüllt wird
-    public static string[] comboList = { "jab", "cross", "hookr", "hookl", "upperl", "upperr" };
-    //public string currentPunch = comboList[0];
+    private int[] combolist = { 1, 3, 2, 4 };
+    public static ComboChecker combochecker;
+
+    private void Awake()
+    {
+        combochecker = this;
+    }
+
+    public int[] getComboList ()
+    {
+        return combolist;
+    }
+
 
     
     // Start is called before the first frame update
@@ -24,13 +35,22 @@ public class comboChecker : MonoBehaviour
     // entfernt das getroffene Ziel aus dem Array
     public void bullseye ()
     {
-        Debug.Log("Geschafft!");
-        for (int i = 0; i < comboList.Length - 1; i++)
+        //Debug.Log("Ziel wurde getroffen!");
+        for (int i = 0; i < combolist.Length - 1; i++)
         {
-            comboList[i] = comboList[i + 1];
+            combolist[i] = combolist[i + 1];
         }
-        System.Array.Resize(ref comboList, comboList.Length - 1);
-        Debug.Log(comboList.Length);
-        //currentPunch = comboList[0];
+        System.Array.Resize(ref combolist, combolist.Length - 1);
+        Debug.Log(combolist.Length);
+
+        if(combolist.Length > 0)
+        {
+            PlayingField.playingfield.showNextTarget();
+        }
+        
     }
+
+
+
+
 }
