@@ -46,11 +46,17 @@ public class ComboChecker : MonoBehaviour
         }
         System.Array.Resize(ref combolist, combolist.Length - 1);
         Debug.Log("Anzahl restliche Ziele: " + combolist.Length);
-        Debug.Log("Nächstes Ziel: " + combolist[0]);
         if(combolist.Length > 0)
         {
+			// Debug.Log("Nächstes Ziel: " + combolist[0]);
             PlayingField.playingfield.showNextTarget();
-        }
+        }else
+		{
+			Debug.Log("Fertig.");
+			for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
+			Gamemode.gamemode.buttons[i].SetActive(true);
+		}	
+		}
         
     }
 

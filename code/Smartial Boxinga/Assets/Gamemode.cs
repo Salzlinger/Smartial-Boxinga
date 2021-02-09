@@ -6,12 +6,15 @@ public class Gamemode : MonoBehaviour
 {
     private int[] tutorialcombolist = { 1, 2, 3 };
     private int gamemodeid;
-
+	public GameObject[] buttons = new GameObject[2];
+	public GameObject Preview;
+	
     public static Gamemode gamemode;
 
     public void Awake()
     {
         gamemode = this;
+		Preview.SetActive(false);
     }
 
 
@@ -20,7 +23,10 @@ public class Gamemode : MonoBehaviour
         gamemodeid = id;
 
         ComboChecker.combochecker.setComboList(generateComboList(id));
-
+		Preview.SetActive(true);
+		for(int i = 0; i < buttons.Length; i++){
+			buttons[i].SetActive(false);
+		}
         PlayingField.playingfield.startGame();
     }
 
@@ -35,7 +41,7 @@ public class Gamemode : MonoBehaviour
         else if (id == 1)
         {
 
-            int[] randomlist = new int[50];
+            int[] randomlist = new int[10];
 
             for (int i = 0; i < randomlist.Length; i++)
             {

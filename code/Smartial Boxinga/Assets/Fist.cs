@@ -23,8 +23,8 @@ public class Fist : MonoBehaviour
             
             if(isLeft != (ComboChecker.combochecker.getComboList()[0] % 2 == 0))
             {
+				other.gameObject.SetActive(false);
                 ComboChecker.combochecker.bullseye();
-                other.gameObject.SetActive(false);
             }
 
         }
