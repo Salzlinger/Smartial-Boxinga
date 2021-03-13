@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class ComboChecker : MonoBehaviour
@@ -28,7 +29,7 @@ public class ComboChecker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
     }
 
     // Update is called once per frame
@@ -49,18 +50,25 @@ public class ComboChecker : MonoBehaviour
         if(combolist.Length > 0)
         {
 			// Debug.Log("Nächstes Ziel: " + combolist[0]);
+			//PlayingField.playingfield.Invoke("showNextTarget", 0.4f);
             PlayingField.playingfield.showNextTarget();
-        }else
+        }
+		else
 		{
 			Debug.Log("Fertig.");
-			for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
-			Gamemode.gamemode.buttons[i].SetActive(true);
+			Gamemode.gamemode.setTutorialCounter(Gamemode.gamemode.getTutorialCounter()+1);
+			if(Gamemode.gamemode.getTutorialCounter() >= 10)
+			{
+				for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
+					Gamemode.gamemode.buttons[i].SetActive(true);
+				}
+				Gamemode.gamemode.setTutorialCounter(0);
+			}
+			else
+			{
+				Gamemode.gamemode.gameStart();
+			}
 		}	
-		}
+	}
         
-    }
-
-
-
-
 }

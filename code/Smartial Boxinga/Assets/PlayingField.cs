@@ -18,12 +18,12 @@ public class PlayingField : MonoBehaviour
         }
     }
 
-
+	/*
     public void startGame()
     {
-        Destroy(GameObject.Find("Dialog1"));
         showNextTarget();
     }
+	*/
 
     public void showNextTarget()
     {
