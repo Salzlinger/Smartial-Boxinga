@@ -25,7 +25,6 @@ public class ComboChecker : MonoBehaviour
         combolist = newcombolist;
     }
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,38 +36,47 @@ public class ComboChecker : MonoBehaviour
     {
         
     }
-    // entfernt das getroffene Ziel aus dem Array
+	
+    // entfernt das getroffene Ziel aus dem Array und macht mittlerweile ganz viele andere sachen :D
     public void bullseye ()
     {
-        //Debug.Log("Ziel wurde getroffen!");
         for (int i = 0; i < combolist.Length - 1; i++)
         {
             combolist[i] = combolist[i + 1];
         }
         System.Array.Resize(ref combolist, combolist.Length - 1);
-        Debug.Log("Anzahl restliche Ziele: " + combolist.Length);
         if(combolist.Length > 0)
         {
-			// Debug.Log("Nächstes Ziel: " + combolist[0]);
 			//PlayingField.playingfield.Invoke("showNextTarget", 0.4f);
             PlayingField.playingfield.showNextTarget();
         }
 		else
 		{
 			Debug.Log("Fertig.");
+			// Im Falle einer Wiederholung könnte hier ein "Notausgang" zum Endscreen des Tutorials
+			// gecalled werden indem man die counter auf die entsprechenden werte setzt.
+			// So kann nach jeder Wiederholung ausgewählt werden, was man danach machen möchte.
 			Gamemode.gamemode.setTutorialCounter(Gamemode.gamemode.getTutorialCounter()+1);
-			if(Gamemode.gamemode.getTutorialCounter() >= 10)
+			if(Gamemode.gamemode.getTutorialCounter() > 10)
 			{
+				Gamemode.gamemode.UpdateText();
+				Gamemode.gamemode.setDialogueCounter(Gamemode.gamemode.getDialogueCounter()+1);
+				Gamemode.gamemode.Invoke("UpdateText", 3.0f);
+				// Hier Anzeige von Buttons/Helfern die einen die Schläge wiederholen lassen
+				// die man wiederholen möchte.
+				/*
 				for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
 					Gamemode.gamemode.buttons[i].SetActive(true);
 				}
+				*/
 				Gamemode.gamemode.setTutorialCounter(0);
 			}
 			else
 			{
+				Gamemode.gamemode.UpdateText();
+				Gamemode.gamemode.setDialogueCounter(Gamemode.gamemode.getDialogueCounter()+1);
 				Gamemode.gamemode.gameStart();
 			}
 		}	
 	}
-        
 }
