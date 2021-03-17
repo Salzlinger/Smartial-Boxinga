@@ -516,7 +516,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 296911135}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &296911135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1208,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 725285685}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &725285685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,7 +1466,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 940978140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &940978140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,7 +1679,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 983635079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &983635079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1990,7 +2034,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1328625896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1328625896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,7 +2452,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1445300387}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1641034923}
+        m_MethodName: RepeatPunch
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1445300387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2700,6 +2766,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titel: {fileID: 2102298663}
   description: {fileID: 2067356013}
+  repeatbuttons:
+  - {fileID: 940978137}
+  - {fileID: 296911132}
+  - {fileID: 983635076}
+  - {fileID: 1445300384}
+  - {fileID: 725285682}
+  - {fileID: 1328625893}
 --- !u!4 &1641034924
 Transform:
   m_ObjectHideFlags: 0

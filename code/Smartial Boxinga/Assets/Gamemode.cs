@@ -26,20 +26,8 @@ public class Gamemode : MonoBehaviour
 
     public void setGamemodeID(int id)
     {
-        this.gamemodeid = id;
-		switch(id)
-		{
-			case 0:
-				DialogueManager.dmanager.setDialogueCounter(1);
-				break;
-			case 1:
-				DialogueManager.dmanager.setDialogueCounter(2);
-				break;
-			default:
-				DialogueManager.dmanager.setDialogueCounter(0);
-				break;
-		}
-		DialogueManager.dmanager.UpdateText();
+		this.gamemodeid = id;
+		DialogueManager.dmanager.updateGamemodeDesc(id);
     }
 	
 	public int getGamemodeId()
@@ -65,40 +53,13 @@ public class Gamemode : MonoBehaviour
 	
 	public void tutorialLoop()
 	{
-		if (DialogueManager.dmanager.getDialogueCounter() < 3){
-			DialogueManager.dmanager.setDialogueCounter(3);
-			DialogueManager.dmanager.UpdateText();
-			DialogueManager.dmanager.increment();
-		}
+		DialogueManager.dmanager.firstMessageException();
 		ComboChecker.combochecker.setComboList(generateComboList(gamemodeid));
 		Preview.SetActive(true);
 		for(int i = 0; i < buttons.Length; i++){
 			buttons[i].SetActive(false);
 		}
-		switch(DialogueManager.dmanager.getDialogueCounter())
-		{
-			case 4:
-				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-				DialogueManager.dmanager.Invoke("increment", 4.0f);
-				DialogueManager.dmanager.Invoke("UpdateText", 9.0f);
-				DialogueManager.dmanager.Invoke("increment", 9.5f);
-				DialogueManager.dmanager.Invoke("UpdateText", 12.5f);
-				DialogueManager.dmanager.Invoke("increment", 13.0f);
-				PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
-				break;
-			case 18:
-				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-				DialogueManager.dmanager.Invoke("increment", 4.0f);
-				DialogueManager.dmanager.Invoke("UpdateText", 7.0f);
-				DialogueManager.dmanager.Invoke("increment", 7.5f);
-				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
-				break;
-			default:
-				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-				DialogueManager.dmanager.Invoke("increment", 4.0f);
-				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
-				break;
-		}
+		DialogueManager.dmanager.dialogueSwitch();
 	}
 	
 	public void enduranceLoop()

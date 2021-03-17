@@ -37,7 +37,8 @@ public class DialogueManager : MonoBehaviour
 								   "Combo 4 Lob", 
 								   "Combo 5 Erklärung",
 								   "Combo 5 Lob",
-								   "Tutorial Ende"
+								   "Tutorial Ende",
+								   "Tutorial Repeat"
 								   };
 								   
 	private string[] descStore = {"Empty",
@@ -69,11 +70,13 @@ public class DialogueManager : MonoBehaviour
 								  "Combo 4 B", 
 								  "Combo 5",
 								  "Combo 5 B",
-								  "Das waren die Grundlegenden Schläge und einfache Kombinationen. Möchtest du etwas bestimmtes wiederholen?"
+								  "Das waren die Grundlegenden Schläge und einfache Kombinationen. Möchtest du etwas bestimmtes wiederholen?",
+								  "Möchtest du einen anderen Schlag trainieren?"
 								  };
 	
 	public Text titel;
 	public Text description;
+	public GameObject[] repeatbuttons;
 	
 	public static DialogueManager dmanager;
 	
@@ -86,7 +89,12 @@ public class DialogueManager : MonoBehaviour
 	
     void Start()
     {
-        
+        foreach(GameObject o in repeatbuttons)
+		{
+			o.SetActive(false);
+		}
+		// Zum Testen der Wiederholungsfunktion
+		//tutorialcounter = 10;
     }
 
     void Update()
@@ -129,26 +137,38 @@ public class DialogueManager : MonoBehaviour
 	
 	public void comboFinished()
 	{
-		tutorialcounter++;
-		if(tutorialcounter > 10)
+		if(!tutorialrepeat)
 		{
-			UpdateText();
-			dialoguecounter++;
-			Invoke("UpdateText", 3.0f);
-			// Hier Anzeige von Buttons/Helfern die einen die Schläge wiederholen lassen
-			// die man wiederholen möchte.
-			/*
-			for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
-				Gamemode.gamemode.buttons[i].SetActive(true);
+			tutorialcounter++;
+			if(tutorialcounter > 10)
+			{
+				UpdateText();
+				dialoguecounter++;
+				Invoke("UpdateText", 3.0f);
+				Invoke("showRepeatButtons", 3.0f);
+				/*
+				for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
+					Gamemode.gamemode.buttons[i].SetActive(true);
+				}
+				*/
+				tutorialcounter = 0;
 			}
-			*/
-			tutorialcounter = 0;
+			else
+			{
+				UpdateText();
+				dialoguecounter++;
+				Gamemode.gamemode.gameStart();
+			}
 		}
 		else
 		{
+			tutorialcounter = 0;
+			dialoguecounter = 30;
 			UpdateText();
-			dialoguecounter++;
-			Gamemode.gamemode.gameStart();
+			foreach(GameObject o in repeatbuttons)
+			{
+				o.SetActive(true);
+			}
 		}
 	}
 	
@@ -156,5 +176,117 @@ public class DialogueManager : MonoBehaviour
 	{
 		titel.text = "Anzahl geschlagener Ziele:";
 		description.text = input;
+	}
+	
+	public void updateGamemodeDesc(int id)
+	{
+		switch(id)
+		{
+			case 0:
+				dialoguecounter = 1;
+				// Zum Testen der Wiederholungsfunktion
+				//dialoguecounter = 27;
+				break;
+			case 1:
+				dialoguecounter = 2;
+				break;
+			default:
+				dialoguecounter = 0;
+				break;
+		}
+		UpdateText();
+	}
+	
+	public void firstMessageException()
+	{
+		if (dialoguecounter < 3){
+			dialoguecounter = 3;
+			UpdateText();
+			dialoguecounter++;
+		}
+	}
+	
+	public void dialogueSwitch()
+	{
+		switch(dialoguecounter)
+		{
+			case 4:
+				Invoke("UpdateText", 3.0f);
+				Invoke("increment", 4.0f);
+				Invoke("UpdateText", 9.0f);
+				Invoke("increment", 9.5f);
+				Invoke("UpdateText", 12.5f);
+				Invoke("increment", 13.0f);
+				PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
+				break;
+			case 18:
+				Invoke("UpdateText", 3.0f);
+				Invoke("increment", 4.0f);
+				Invoke("UpdateText", 7.0f);
+				Invoke("increment", 7.5f);
+				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+				break;
+			default:
+				if(!tutorialrepeat)
+				{
+					Invoke("UpdateText", 3.0f);
+					Invoke("increment", 4.0f);
+					PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+				}
+				else
+				{
+					UpdateText();
+					PlayingField.playingfield.Invoke("showNextTarget", 4.0f);
+				}
+				break;
+		}
+	}
+	
+	public void RepeatPunch(int pnr)
+	{
+		tutorialrepeat = true;
+		foreach(GameObject o in repeatbuttons)
+			{
+				o.SetActive(true);
+			}
+		switch(pnr)
+		{
+			case 1:
+				tutorialcounter = 0;
+				dialoguecounter = 6;
+				break;
+			case 2:
+				tutorialcounter = 1;
+				dialoguecounter = 8;
+				break;
+			case 3:
+				tutorialcounter = 2;
+				dialoguecounter = 10;
+				break;
+			case 4:
+				tutorialcounter = 3;
+				dialoguecounter = 12;
+				break;
+			case 5:
+				tutorialcounter = 4;
+				dialoguecounter = 14;
+				break;
+			case 6:
+				tutorialcounter = 5;
+				dialoguecounter = 16;
+				break;
+			default:
+				Debug.Log("Default Exit RepeatPunch()");
+				break;
+		}
+		Gamemode.gamemode.tutorialLoop();
+	}
+	
+	public void showRepeatButtons()
+	{
+		foreach(GameObject o in repeatbuttons)
+		{
+			o.SetActive(true);
+		}
 	}
 }
