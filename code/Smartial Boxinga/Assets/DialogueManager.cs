@@ -84,13 +84,11 @@ public class DialogueManager : MonoBehaviour
 		tutorialrepeat = false;
 	}
 	
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -127,5 +125,36 @@ public class DialogueManager : MonoBehaviour
 	
 	public bool getTutorialRepeat(){
 		return this.tutorialrepeat;
+	}
+	
+	public void comboFinished()
+	{
+		tutorialcounter++;
+		if(tutorialcounter > 10)
+		{
+			UpdateText();
+			dialoguecounter++;
+			Invoke("UpdateText", 3.0f);
+			// Hier Anzeige von Buttons/Helfern die einen die Schläge wiederholen lassen
+			// die man wiederholen möchte.
+			/*
+			for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
+				Gamemode.gamemode.buttons[i].SetActive(true);
+			}
+			*/
+			tutorialcounter = 0;
+		}
+		else
+		{
+			UpdateText();
+			dialoguecounter++;
+			Gamemode.gamemode.gameStart();
+		}
+	}
+	
+	public void endurancePlus(string input)
+	{
+		titel.text = "Anzahl geschlagener Ziele:";
+		description.text = input;
 	}
 }

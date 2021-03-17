@@ -8,6 +8,8 @@ public class ComboChecker : MonoBehaviour
 {
     // Array welches mit der auszuführenden Combo befüllt wird
     private int[] combolist;
+	private int endurancecount;
+	
     public static ComboChecker combochecker;
 
     private void Awake()
@@ -44,7 +46,16 @@ public class ComboChecker : MonoBehaviour
         {
             combolist[i] = combolist[i + 1];
         }
-        System.Array.Resize(ref combolist, combolist.Length - 1);
+		if (Gamemode.gamemode.getGamemodeId() == 1)
+		{
+			combolist[combolist.Length - 1] = UnityEngine.Random.Range(1, 7);
+			endurancecount++;
+			DialogueManager.dmanager.endurancePlus(endurancecount.ToString());
+		}
+		else
+		{
+			System.Array.Resize(ref combolist, combolist.Length - 1);
+		}
         if(combolist.Length > 0)
         {
 			//PlayingField.playingfield.Invoke("showNextTarget", 0.4f);
@@ -53,30 +64,7 @@ public class ComboChecker : MonoBehaviour
 		else
 		{
 			Debug.Log("Fertig.");
-			// Im Falle einer Wiederholung könnte hier ein "Notausgang" zum Endscreen des Tutorials
-			// gecalled werden indem man die counter auf die entsprechenden werte setzt.
-			// So kann nach jeder Wiederholung ausgewählt werden, was man danach machen möchte.
-			DialogueManager.dmanager.setTutorialCounter(DialogueManager.dmanager.getTutorialCounter()+1);
-			if(DialogueManager.dmanager.getTutorialCounter() > 10)
-			{
-				DialogueManager.dmanager.UpdateText();
-				DialogueManager.dmanager.setDialogueCounter(DialogueManager.dmanager.getDialogueCounter()+1);
-				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-				// Hier Anzeige von Buttons/Helfern die einen die Schläge wiederholen lassen
-				// die man wiederholen möchte.
-				/*
-				for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
-					Gamemode.gamemode.buttons[i].SetActive(true);
-				}
-				*/
-				DialogueManager.dmanager.setTutorialCounter(0);
-			}
-			else
-			{
-				DialogueManager.dmanager.UpdateText();
-				DialogueManager.dmanager.setDialogueCounter(DialogueManager.dmanager.getDialogueCounter()+1);
-				Gamemode.gamemode.gameStart();
-			}
+			DialogueManager.dmanager.comboFinished();
 		}	
 	}
 }

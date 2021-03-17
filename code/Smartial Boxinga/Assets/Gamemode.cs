@@ -42,9 +42,29 @@ public class Gamemode : MonoBehaviour
 		DialogueManager.dmanager.UpdateText();
     }
 	
+	public int getGamemodeId()
+	{
+		return this.gamemodeid;
+	}
+	
 	public void gameStart()
 	{
-		// Hier müsste der erste Dialog aufgerufen werden.
+		switch(gamemodeid)
+		{
+			case 0:
+				tutorialLoop();
+				break;
+			case 1:
+				enduranceLoop();
+				break;
+			default:
+				Debug.Log("Default exit gameStart()");
+				break;
+		}
+	}
+	
+	public void tutorialLoop()
+	{
 		if (DialogueManager.dmanager.getDialogueCounter() < 3){
 			DialogueManager.dmanager.setDialogueCounter(3);
 			DialogueManager.dmanager.UpdateText();
@@ -55,35 +75,40 @@ public class Gamemode : MonoBehaviour
 		for(int i = 0; i < buttons.Length; i++){
 			buttons[i].SetActive(false);
 		}
-		// Wahrscheinlich eleganter als Switch-Case
-		if ((DialogueManager.dmanager.getDialogueCounter() != 16) && (DialogueManager.dmanager.getDialogueCounter() != 4))
+		switch(DialogueManager.dmanager.getDialogueCounter())
 		{
-			DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-			DialogueManager.dmanager.Invoke("increment", 4.0f);
-			PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+			case 4:
+				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
+				DialogueManager.dmanager.Invoke("increment", 4.0f);
+				DialogueManager.dmanager.Invoke("UpdateText", 9.0f);
+				DialogueManager.dmanager.Invoke("increment", 9.5f);
+				DialogueManager.dmanager.Invoke("UpdateText", 12.5f);
+				DialogueManager.dmanager.Invoke("increment", 13.0f);
+				PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
+				break;
+			case 18:
+				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
+				DialogueManager.dmanager.Invoke("increment", 4.0f);
+				DialogueManager.dmanager.Invoke("UpdateText", 7.0f);
+				DialogueManager.dmanager.Invoke("increment", 7.5f);
+				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+				break;
+			default:
+				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
+				DialogueManager.dmanager.Invoke("increment", 4.0f);
+				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+				break;
 		}
-		else if (DialogueManager.dmanager.getDialogueCounter() == 16)
-		{
-			//Jetzt machen wir den Übergang zu einfachen Kombinationen. Delay muss hiernach evtl etwas größer sein.
-			DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-			DialogueManager.dmanager.Invoke("increment", 4.0f);
-			//Evtl. größeres Delay
-			DialogueManager.dmanager.Invoke("UpdateText", 7.0f);
-			DialogueManager.dmanager.Invoke("increment", 7.5f);
-			PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+	}
+	
+	public void enduranceLoop()
+	{
+		ComboChecker.combochecker.setComboList(generateComboList(gamemodeid));
+		Preview.SetActive(true);
+		for(int i = 0; i < buttons.Length; i++){
+			buttons[i].SetActive(false);
 		}
-		else
-		{
-			// Ich hoffe das passt so mit den Erklärungen
-			DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
-			DialogueManager.dmanager.Invoke("increment", 4.0f);
-			//Evtl. größeres Delay
-			DialogueManager.dmanager.Invoke("UpdateText", 9.0f);
-			DialogueManager.dmanager.Invoke("increment", 9.5f);
-			DialogueManager.dmanager.Invoke("UpdateText", 12.5f);
-			DialogueManager.dmanager.Invoke("increment", 13.0f);
-			PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
-		}
+		PlayingField.playingfield.Invoke("showNextTarget", 1.0f);
 	}
 
     private int[] generateComboList(int id)
