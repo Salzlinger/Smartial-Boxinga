@@ -18,12 +18,14 @@ public class PlayingField : MonoBehaviour
         }
     }
 
-	/*
-    public void startGame()
+	
+    public void Start()
     {
-        showNextTarget();
+        FindObjectOfType<AudioManager>().Play("Ambient"); //Fängt an Ambiente Sound abzuspielen
+        FindObjectOfType<AudioManager>().Play("TestOST"); //Test
+
     }
-	*/
+
 
     public void showNextTarget()
     {

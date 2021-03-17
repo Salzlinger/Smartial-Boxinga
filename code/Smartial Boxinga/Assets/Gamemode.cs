@@ -21,6 +21,7 @@ public class Gamemode : MonoBehaviour
 	public void Start()
 	{
 		//setGamemodeID(0);
+
 	}
 
 

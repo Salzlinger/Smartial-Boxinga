@@ -883,6 +883,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Ambient
+    clip: {fileID: 8300000, guid: 8b1c98b0dc5f16a42b44ef1cbef3c64f, type: 3}
+    volume: 0.01
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: NewSound
+    clip: {fileID: 8300000, guid: deefa8e0852b2bb4a8d5f449fa7b9e04, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!4 &810117376
 Transform:
   m_ObjectHideFlags: 0
