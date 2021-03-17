@@ -10,6 +10,11 @@ public class Fist : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        string[] soundnames = { "Hit1", "Hit2", "Hit3" };
+        int r = Random.Range(0, 3);
+
+        FindObjectOfType<AudioManager>().Play(soundnames[r]); //Spielt Hitsound ab
+
         //Debug.Log(other.gameObject.name);
         
         // checkt ob der schlag in der Combo grade auch auszuführen ist.
