@@ -56,12 +56,12 @@ public class ComboChecker : MonoBehaviour
 			// Im Falle einer Wiederholung könnte hier ein "Notausgang" zum Endscreen des Tutorials
 			// gecalled werden indem man die counter auf die entsprechenden werte setzt.
 			// So kann nach jeder Wiederholung ausgewählt werden, was man danach machen möchte.
-			Gamemode.gamemode.setTutorialCounter(Gamemode.gamemode.getTutorialCounter()+1);
-			if(Gamemode.gamemode.getTutorialCounter() > 10)
+			DialogueManager.dmanager.setTutorialCounter(DialogueManager.dmanager.getTutorialCounter()+1);
+			if(DialogueManager.dmanager.getTutorialCounter() > 10)
 			{
-				Gamemode.gamemode.UpdateText();
-				Gamemode.gamemode.setDialogueCounter(Gamemode.gamemode.getDialogueCounter()+1);
-				Gamemode.gamemode.Invoke("UpdateText", 3.0f);
+				DialogueManager.dmanager.UpdateText();
+				DialogueManager.dmanager.setDialogueCounter(DialogueManager.dmanager.getDialogueCounter()+1);
+				DialogueManager.dmanager.Invoke("UpdateText", 3.0f);
 				// Hier Anzeige von Buttons/Helfern die einen die Schläge wiederholen lassen
 				// die man wiederholen möchte.
 				/*
@@ -69,12 +69,12 @@ public class ComboChecker : MonoBehaviour
 					Gamemode.gamemode.buttons[i].SetActive(true);
 				}
 				*/
-				Gamemode.gamemode.setTutorialCounter(0);
+				DialogueManager.dmanager.setTutorialCounter(0);
 			}
 			else
 			{
-				Gamemode.gamemode.UpdateText();
-				Gamemode.gamemode.setDialogueCounter(Gamemode.gamemode.getDialogueCounter()+1);
+				DialogueManager.dmanager.UpdateText();
+				DialogueManager.dmanager.setDialogueCounter(DialogueManager.dmanager.getDialogueCounter()+1);
 				Gamemode.gamemode.gameStart();
 			}
 		}	
