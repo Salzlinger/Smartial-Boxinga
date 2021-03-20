@@ -9,20 +9,13 @@ public class Gamemode : MonoBehaviour
 	
     public static Gamemode gamemode;
 
-	public GameObject[] buttons = new GameObject[3];
+	public GameObject[] targets	= new GameObject[2];
 	public GameObject Preview;
 	
     public void Awake()
     {
         gamemode = this;
-		Preview.SetActive(false);
     }
-	
-	public void Start()
-	{
-		//setGamemodeID(0);
-	}
-
 
     public void setGamemodeID(int id)
     {
@@ -54,28 +47,43 @@ public class Gamemode : MonoBehaviour
 	public void tutorialLoop()
 	{
 		DialogueManager.dmanager.firstMessageException();
-		ComboChecker.combochecker.setComboList(generateComboList(gamemodeid));
-		Preview.SetActive(true);
-		for(int i = 0; i < buttons.Length; i++){
-			buttons[i].SetActive(false);
-		}
 		DialogueManager.dmanager.dialogueSwitch();
 	}
 	
 	public void enduranceLoop()
 	{
-		ComboChecker.combochecker.setComboList(generateComboList(gamemodeid));
-		Preview.SetActive(true);
-		for(int i = 0; i < buttons.Length; i++){
-			buttons[i].SetActive(false);
-		}
-		PlayingField.playingfield.Invoke("showNextTarget", 1.0f);
+		ComboChecker.combochecker.setComboList(generateComboList());
+		PlayingField.playingfield.showNextTarget();
+	}
+	
+	public void tutorialStart()
+	{
+		gamemodeEnd(1);
+		// targets[0].SetActive(false);
+		gameStart();
+	}
+	
+	public void enduranceStart()
+	{
+		gamemodeEnd(0);
+		// targets[1].SetActive(false);
+		DialogueManager.dmanager.Invoke("UpdateText", 4.5f);
+		Invoke("gameStart", 5.0f);
+	}
+	
+	public void gamemodeEnd(int i)
+	{
+		CancelInvoke();
+		// targets[i].SetActive(true);
+		DialogueManager.dmanager.resetTutorial();
+		ComboChecker.combochecker.clearComboList();
+		PlayingField.playingfield.hideTargets();
 	}
 
-    private int[] generateComboList(int id)
+    private int[] generateComboList()
     {
 
-        if (id == 0)
+        if (gamemodeid == 0)
         {
 			var list = new List<int>();
 			list.Clear();
@@ -130,7 +138,7 @@ public class Gamemode : MonoBehaviour
 			return array;
         }
 
-        else if (id == 1)
+        else if (gamemodeid == 1)
         {
 
             int[] randomlist = new int[10];
@@ -139,14 +147,6 @@ public class Gamemode : MonoBehaviour
             {
                 randomlist[i] = Random.Range(1, 7);
             }
-
-            Debug.Log("Combolänge: " + randomlist.Length);
-            Debug.Log("Combo:");
-            for (int i = 0; i < randomlist.Length; i++)
-            {
-                Debug.Log(randomlist[i]);
-            }
-
             return randomlist;
         }
         else
@@ -155,4 +155,9 @@ public class Gamemode : MonoBehaviour
         }
 
     }
+	
+	public void setComboInvokable()
+	{
+		ComboChecker.combochecker.setComboList(generateComboList());
+	}
 }

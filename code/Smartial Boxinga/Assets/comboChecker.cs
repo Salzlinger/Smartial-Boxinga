@@ -7,7 +7,7 @@ using System;
 public class ComboChecker : MonoBehaviour
 {
     // Array welches mit der auszuführenden Combo befüllt wird
-    private int[] combolist;
+    private int[] combolist = {};
 	private int endurancecount;
 	
     public static ComboChecker combochecker;
@@ -66,5 +66,10 @@ public class ComboChecker : MonoBehaviour
 			Debug.Log("Fertig.");
 			DialogueManager.dmanager.comboFinished();
 		}	
+	}
+	
+	public void clearComboList()
+	{
+		System.Array.Resize(ref combolist, 0);
 	}
 }

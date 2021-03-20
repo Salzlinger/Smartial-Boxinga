@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class DialogueManager : MonoBehaviour
 	private int tutorialcounter;
 	private int dialoguecounter;
 	private bool tutorialrepeat;
-	private string[] titelStore = {"Empty", 
+	private string[] titelStore = {"", 
 								   "Tutorial-Modus", 
 								   "Zufalls-Modus", 
 								   "Begrüßung A",								   
@@ -41,7 +42,7 @@ public class DialogueManager : MonoBehaviour
 								   "Tutorial Repeat"
 								   };
 								   
-	private string[] descStore = {"Empty",
+	private string[] descStore = {"",
 								  "In diesem Spielmodus können grundlegende Schläge und einfache Kombinationen geübt werden.",
 								  "In diesem Spielmodus können an zufälligen Kombinationen Reaktionszeit und Ausdauer trainiert werden.", 
 								  "Willkommen in meinem Dojo junger Schüler, hier behandeln wir die Grundlagen des Boxens.",
@@ -89,10 +90,7 @@ public class DialogueManager : MonoBehaviour
 	
     void Start()
     {
-        foreach(GameObject o in repeatbuttons)
-		{
-			o.SetActive(false);
-		}
+        hideRepeatButtons();
 		// Zum Testen der Wiederholungsfunktion
 		//tutorialcounter = 10;
     }
@@ -123,8 +121,20 @@ public class DialogueManager : MonoBehaviour
 	}
 	
 	public void UpdateText(){
-		this.titel.text = this.titelStore[this.dialoguecounter];
-		this.description.text = this.descStore[this.dialoguecounter];
+		try
+		{
+			this.titel.text = this.titelStore[this.dialoguecounter];
+			this.description.text = this.descStore[this.dialoguecounter];
+		}
+		catch (Exception e)
+		{
+			if (this.dialoguecounter > this.descStore.Length -1)
+			{
+				Debug.Log("DialogueManager Exception e.");
+				this.dialoguecounter = this.descStore.Length -1;
+				UpdateText();
+			}
+		}
 	}
 	
 	public void setTutorialRepeat(bool b){
@@ -146,11 +156,6 @@ public class DialogueManager : MonoBehaviour
 				dialoguecounter++;
 				Invoke("UpdateText", 3.0f);
 				Invoke("showRepeatButtons", 3.0f);
-				/*
-				for(int i = 0; i < Gamemode.gamemode.buttons.Length; i++){
-					Gamemode.gamemode.buttons[i].SetActive(true);
-				}
-				*/
 				tutorialcounter = 0;
 			}
 			else
@@ -165,10 +170,7 @@ public class DialogueManager : MonoBehaviour
 			tutorialcounter = 0;
 			dialoguecounter = 30;
 			UpdateText();
-			foreach(GameObject o in repeatbuttons)
-			{
-				o.SetActive(true);
-			}
+			showRepeatButtons();
 		}
 	}
 	
@@ -217,6 +219,7 @@ public class DialogueManager : MonoBehaviour
 				Invoke("increment", 9.5f);
 				Invoke("UpdateText", 12.5f);
 				Invoke("increment", 13.0f);
+				Gamemode.gamemode.Invoke("setComboInvokable", 15.0f);
 				PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
 				break;
 			case 18:
@@ -224,6 +227,7 @@ public class DialogueManager : MonoBehaviour
 				Invoke("increment", 4.0f);
 				Invoke("UpdateText", 7.0f);
 				Invoke("increment", 7.5f);
+				Gamemode.gamemode.Invoke("setComboInvokable", 8.0f);
 				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
 				break;
 			default:
@@ -231,11 +235,13 @@ public class DialogueManager : MonoBehaviour
 				{
 					Invoke("UpdateText", 3.0f);
 					Invoke("increment", 4.0f);
+					Gamemode.gamemode.Invoke("setComboInvokable", 8.0f);
 					PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
 				}
 				else
 				{
 					UpdateText();
+					Gamemode.gamemode.Invoke("setComboInvokable", 4.0f);
 					PlayingField.playingfield.Invoke("showNextTarget", 4.0f);
 				}
 				break;
@@ -245,10 +251,7 @@ public class DialogueManager : MonoBehaviour
 	public void RepeatPunch(int pnr)
 	{
 		tutorialrepeat = true;
-		foreach(GameObject o in repeatbuttons)
-			{
-				o.SetActive(true);
-			}
+		showRepeatButtons();
 		switch(pnr)
 		{
 			case 1:
@@ -288,5 +291,22 @@ public class DialogueManager : MonoBehaviour
 		{
 			o.SetActive(true);
 		}
+	}
+	
+	public void hideRepeatButtons()
+	{
+		foreach(GameObject o in repeatbuttons)
+		{
+			o.SetActive(false);
+		}
+	}
+	
+	public void resetTutorial()
+	{
+		CancelInvoke();
+		setTutorialRepeat(false);
+		setDialogueCounter(0);
+		setTutorialCounter(0);
+		hideRepeatButtons();
 	}
 }

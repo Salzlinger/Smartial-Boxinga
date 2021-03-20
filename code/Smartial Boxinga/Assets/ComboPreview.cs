@@ -5,34 +5,33 @@ using UnityEngine.UI;
 
 public class ComboPreview : MonoBehaviour
 {
-	
-	public Text nexthit;
-	public Text nexthit2;
-	public Text nexthit3;
+	public Text[] nexthits;
 	
     void Update()
     {
 		switch(ComboChecker.combochecker.getComboList().Length)
 		{
 			case 0:
-				nexthit.text = "";
-				nexthit2.text = "";
-				nexthit3.text = "";
+				for (int i = 0; i < nexthits.Length; i++)
+				{
+					nexthits[i].text = "";
+				}
 				break;
 			case 1:
-				nexthit.text = returnHit(0);
-				nexthit2.text = "";
-				nexthit3.text = "";
+				nexthits[0].text = returnHit(0);
+				nexthits[1].text = "";
+				nexthits[2].text = "";
 				break;
 			case 2:
-				nexthit.text = returnHit(0);
-				nexthit2.text = returnHit(1);
-				nexthit3.text = "";
+				nexthits[0].text = returnHit(0);
+				nexthits[1].text = returnHit(1);
+				nexthits[2].text = "";
 				break;
 			default:
-				nexthit.text = returnHit(0);
-				nexthit2.text = returnHit(1);
-				nexthit3.text = returnHit(2);
+				for (int i = 0; i < nexthits.Length; i++)
+				{
+					nexthits[i].text = returnHit(i);
+				}
 				break;
 		}
     }
@@ -40,4 +39,5 @@ public class ComboPreview : MonoBehaviour
 	private string returnHit (int i){
 		return ComboChecker.combochecker.getComboList()[i].ToString();
 	}
+	
 }

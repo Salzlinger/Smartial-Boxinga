@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,24 +13,32 @@ public class PlayingField : MonoBehaviour
     {
         playingfield = this;
 
-        for (int i = 0; i < targets.Length; i++)
-        {
-            targets[i].SetActive(false);
-        }
+        hideTargets();
     }
-
-	/*
-    public void startGame()
-    {
-        showNextTarget();
-    }
-	*/
 
     public void showNextTarget()
     {
-        // Debug.Log("Nächses Ziel: " + targets[ComboChecker.combochecker.getComboList()[0] - 1].name);
+		try
+		{
         targets[ComboChecker.combochecker.getComboList()[0] - 1].SetActive(true);
-    }
+		}
+		catch(IndexOutOfRangeException e)
+		{
+			if (ComboChecker.combochecker.getComboList().Length == 0)
+			{
+				Debug.Log("Playingfield Exception e.");
+			}
+		}
+	}
+	
+	public void hideTargets()
+	{
+		CancelInvoke();
+		for (int i = 0; i < targets.Length; i++)
+        {
+            targets[i].SetActive(false);
+        }
+	}
 
 
 
