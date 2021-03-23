@@ -9,6 +9,7 @@ public class ComboChecker : MonoBehaviour
     // Array welches mit der auszuführenden Combo befüllt wird
     private int[] combolist = {};
 	private int endurancecount;
+	private bool hitGood;
 	
     public static ComboChecker combochecker;
 
@@ -49,7 +50,15 @@ public class ComboChecker : MonoBehaviour
 		if (Gamemode.gamemode.getGamemodeId() == 1)
 		{
 			combolist[combolist.Length - 1] = UnityEngine.Random.Range(1, 7);
-			endurancecount++;
+			if(hitGood)
+			{
+				endurancecount += 5;
+				hitGood = false;
+			}
+			else
+			{
+				endurancecount++;	
+			}
 			DialogueManager.dmanager.endurancePlus(endurancecount.ToString());
 		}
 		else
@@ -71,5 +80,10 @@ public class ComboChecker : MonoBehaviour
 	public void clearComboList()
 	{
 		System.Array.Resize(ref combolist, 0);
+	}
+	
+	public void lastHitGood()
+	{
+		hitGood = true;
 	}
 }

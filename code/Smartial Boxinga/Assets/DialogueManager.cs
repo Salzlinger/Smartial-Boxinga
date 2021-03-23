@@ -92,7 +92,7 @@ public class DialogueManager : MonoBehaviour
     {
         hideRepeatButtons();
 		// Zum Testen der Wiederholungsfunktion
-		//tutorialcounter = 10;
+		tutorialcounter = 10;
     }
 
     void Update()
@@ -185,9 +185,9 @@ public class DialogueManager : MonoBehaviour
 		switch(id)
 		{
 			case 0:
-				dialoguecounter = 1;
+				// dialoguecounter = 1;
 				// Zum Testen der Wiederholungsfunktion
-				//dialoguecounter = 27;
+				dialoguecounter = 27;
 				break;
 			case 1:
 				dialoguecounter = 2;
@@ -251,7 +251,7 @@ public class DialogueManager : MonoBehaviour
 	public void RepeatPunch(int pnr)
 	{
 		tutorialrepeat = true;
-		showRepeatButtons();
+		hideRepeatButtons();
 		switch(pnr)
 		{
 			case 1:
