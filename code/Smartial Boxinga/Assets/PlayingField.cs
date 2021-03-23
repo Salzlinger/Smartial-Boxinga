@@ -22,8 +22,7 @@ public class PlayingField : MonoBehaviour
     public void Start()
     {
         FindObjectOfType<AudioManager>().Play("Ambient"); //Fängt an Ambiente Sound abzuspielen
-        FindObjectOfType<AudioManager>().Play("TestOST"); //Test
-
+        FindObjectOfType<AudioManager>().Play("MenuOST"); 
     }
 
 

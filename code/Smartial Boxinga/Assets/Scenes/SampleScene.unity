@@ -867,30 +867,36 @@ MonoBehaviour:
   sounds:
   - name: Hit1
     clip: {fileID: 8300000, guid: fc829d06f14b49e46a7f10479e59e55b, type: 3}
-    volume: 0.4
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Hit2
     clip: {fileID: 8300000, guid: 97c334ebdd56e3b4fbfedc682e6004ab, type: 3}
-    volume: 0.4
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Hit3
     clip: {fileID: 8300000, guid: 1e1bc1e806142ca4aaf46ef5b1944d96, type: 3}
-    volume: 0.4
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Ambient
     clip: {fileID: 8300000, guid: 8b1c98b0dc5f16a42b44ef1cbef3c64f, type: 3}
-    volume: 0.01
+    volume: 0.005
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: NewSound
-    clip: {fileID: 8300000, guid: deefa8e0852b2bb4a8d5f449fa7b9e04, type: 3}
+  - name: MenuOST
+    clip: {fileID: 8300000, guid: 4f43a8c690fdb934687bd75088ff849a, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: FightOST
+    clip: {fileID: 8300000, guid: 8e462b6b024b6cd4c8e8bf6ec0007ef4, type: 3}
     volume: 0.1
     pitch: 1
     loop: 1

@@ -45,6 +45,13 @@ public class Gamemode : MonoBehaviour
 	
 	public void gameStart()
 	{
+
+
+        FindObjectOfType<AudioManager>().Stop("MenuOST");
+		FindObjectOfType<AudioManager>().Play("FightOST");
+
+
+
 		// Hier müsste der erste Dialog aufgerufen werden.
 		if (DialogueManager.dmanager.getDialogueCounter() < 3){
 			DialogueManager.dmanager.setDialogueCounter(3);

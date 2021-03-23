@@ -1,5 +1,7 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class AudioManager : MonoBehaviour
@@ -33,4 +35,15 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         }
     }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name); //Durchsucht Soundarray nach Sound mit richtigem Namen
+        if (s != null)
+        {
+            s.source.Stop();
+        }
+    }
+
+   
 }
