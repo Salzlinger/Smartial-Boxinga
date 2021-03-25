@@ -17,7 +17,8 @@ public class DialogueManager : MonoBehaviour
 								   "Begrüßung C",								   
 								   "Jab-Erklärung", 
 								   "Jab-Lob", 
-								   "Cross-Erklärung", 
+								   "Cross-Erklärung",
+								   "Bonus",
 								   "Cross-Lob", 
 								   "Left Hook Erklärung", 
 								   "Left Hook Lob", 
@@ -43,35 +44,36 @@ public class DialogueManager : MonoBehaviour
 								   };
 								   
 	private string[] descStore = {"",
-								  "In diesem Spielmodus können grundlegende Schläge und einfache Kombinationen geübt werden.",
-								  "In diesem Spielmodus können an zufälligen Kombinationen Reaktionszeit und Ausdauer trainiert werden.", 
-								  "Willkommen in meinem Dojo junger Schüler, hier behandeln wir die Grundlagen des Boxens.",
-								  "Zuerst müssen wir richtig stehen, das heißt dominantes Bein nach vorne und Hände auf Wangenhöhe.",
-								  "Aus dieser Position üben wir alle Schläge. Fangen wir mit dem Jab an. ",
+								  "In diesem Spielmodus kannst du grundlegende Schläge und einfache Kombinationen üben.",
+								  "In diesem Spielmodus kannst du an zufälligen Kombinationen deine Reaktionszeit und Ausdauer trainieren.", 
+								  "Willkommen in meinem Dojo junger Schüler, hier erlernst du die Grundlagen des Boxens.",
+								  "Die richtige Körperhaltung ist sehr wichtig. Dein dominantes Bein muss nach vorne und deine Hände auf Wangenhöhe.",
+								  "In dieser Position übst du alle Schläge. Fangen wir mit dem Jab an.",
 								  "Der Jab ist ein gerader Schlag mit der führenden Hand.", 
-								  "Gut! Der Jab wird oft verwendet, also trainiere ihn gewissenhaft.", 
-								  "Der Cross ist das Gegenstück zum Jab, ein schneller Schlag mit der hinteren Hand.", 
-								  "Ausgezeichnet. Denke daran die Hand mit der du nicht schlägst zum Blocken au Wangenhöhe zu halten,", 
+								  "Sehr gut! Der Jab wird oft verwendet, also trainiere ihn gewissenhaft.", 
+								  "Der Cross ist das Gegenstück zum Jab, ein schneller Schlag mit der hinteren Hand.",
+								  "Ab jetzt ist es auch wichtig, den Schlägen durch Rotation des Körpers Kraft zu verleihen.",
+								  "Ausgezeichnet. Denke daran die Hand mit der du nicht schlägst zum Blocken auf Wangenhöhe zu halten,", 
 								  "Der linke Haken ist ein kraftvoller Schlag mit der linken Hand gegen die Seite des Kopfes des Gegners.", 
-								  "Gut. Der linke Haken bekommt viel Energie durch Rotation des Oberkörpers, das ist hier sehr wichtig.", 
+								  "Super. Der linke Haken bekommt viel Energie durch Rotation des Oberkörpers, das ist hier sehr wichtig.", 
 								  "Jetzt zum rechten Haken, dieser wird äquivalent zum linken Haken mit rechts geschlagen.", 
 								  "Das sieht doch schon ganz gut aus. Immer an die Rotation denken.", 
 								  "Es folgt der linke Kinnhaken, ein von unten nach oben ausgeführter Schlag mit der linken Hand.", 
-								  "Indem du Schub aus deinen Beinen mitnimmst kannst du diesen Schlag wesentlich stärker machen.", 
+								  "Schon ganz gut, vergiss aber nicht die rechte Hand zum Blocken oben zu halten.", 
 								  "Der rechte Kinnhaken wird wieder analog zum linken Kinnhaken mit der rechten Hand ausgeführt.",
-								  "Auch hier wieder an die Bewegung der Beine denken, sonst geht dir Kraft verloren.",
+								  "Die Kinnhaken sind kompliziertere Schläge, deswegen ist regelmäßiges Training sehr wichtig.",
 								  "Nun wird es Zeit die gelernten Schläge in einfachen Kombinationen anzuwenden.",
 								  "Fangen wir mit einer schnellen Jab-Cross Kombination an.", 
 								  "Sehr schön. Diese schnelle Kombo kann verwendet werden, um langsamere Schläge vorzubereiten.", 
 								  "Ein solcher Schlag ist der linke Haken. Setzen wir diesen an das Ende der schnellen Kombination.", 
-								  "Genau so. Der Cross gibt dir genügend Zeit, deinen linken Haken zu setzen.", 
+								  "Perfekt. Der Cross gibt dir genügend Zeit, deinen linken Haken zu setzen.", 
 								  "Probieren wir die gleiche Kombo nochmal mit einem rechten Haken am Ende.", 
 								  "Das sieht doch schon langsam aus wie echtes Boxen. Weiter so!", 
 								  "Man kann den rechten Haken auch durch einen rechten Kinnhaken ersetzen. Probieren wir es aus.", 
 								  "Hervorragend! Es ist wichtig, variabel in der Wahl seiner Schläge zu bleiben.", 
-								  "Kombos müssen nicht immer abwechselnd linke und rechte Schläge sein, wie das nächste Beispiel zeigt.",
-								  "Hervorragend. Mit ausreichend Übung kann aus dir ein echter Meister des Boxens werden!",
-								  "Das waren die Grundlegenden Schläge und einfache Kombinationen. Möchtest du etwas bestimmtes wiederholen?",
+								  "Kombos müssen nicht immer abwechselnd linke und rechte Schläge besitzen, wie das nächste Beispiel zeigen wird.",
+								  "Ausgezeichnet. Mit ausreichend Übung kann aus dir ein echter Meister des Boxens werden!",
+								  "Das waren die grundlegenden Schläge und ein paar einfache Kombinationen. Möchtest du etwas bestimmtes wiederholen?",
 								  "Möchtest du einen anderen Schlag trainieren?"
 								  };
 	
@@ -168,7 +170,7 @@ public class DialogueManager : MonoBehaviour
 		else
 		{
 			tutorialcounter = 0;
-			dialoguecounter = 30;
+			dialoguecounter = 30;//31
 			UpdateText();
 			showRepeatButtons();
 		}
@@ -185,9 +187,7 @@ public class DialogueManager : MonoBehaviour
 		switch(id)
 		{
 			case 0:
-				// dialoguecounter = 1;
-				// Zum Testen der Wiederholungsfunktion
-				dialoguecounter = 27;
+				dialoguecounter = 1;
 				break;
 			case 1:
 				dialoguecounter = 2;
@@ -204,7 +204,8 @@ public class DialogueManager : MonoBehaviour
 		if (dialoguecounter < 3){
 			dialoguecounter = 3;
 			UpdateText();
-			dialoguecounter++;
+			dialoguecounter = 1;
+			FindObjectOfType<AudioManager>().Play("3"); 
 		}
 	}
 	
@@ -212,17 +213,22 @@ public class DialogueManager : MonoBehaviour
 	{
 		switch(dialoguecounter)
 		{
-			case 4:
-				Invoke("UpdateText", 3.0f);
-				Invoke("increment", 4.0f);
-				Invoke("UpdateText", 9.0f);
-				Invoke("increment", 9.5f);
-				Invoke("UpdateText", 12.5f);
-				Invoke("increment", 13.0f);
-				Gamemode.gamemode.Invoke("setComboInvokable", 15.0f);
-				PlayingField.playingfield.Invoke("showNextTarget", 15.0f);
+			case 1:
+				Invoke("UpdateText", 6.0f);
+				Invoke("playInvokeable", 6.0f);
+				Invoke("increment", 6.1f);
+				Invoke("increment", 6.1f);
+				Invoke("increment", 6.1f);
+				Invoke("UpdateText", 13.0f);
+				Invoke("playInvokeable", 13.0f);
+				Invoke("increment", 13.1f);
+				Invoke("UpdateText", 20.5f);
+				Invoke("playInvokeable", 20.5f);
+				Invoke("increment", 20.6f);
+				Gamemode.gamemode.Invoke("setComboInvokable", 25.5f);
+				PlayingField.playingfield.Invoke("showNextTarget", 25.5f);
 				break;
-			case 18:
+			case 18: //19
 				Invoke("UpdateText", 3.0f);
 				Invoke("increment", 4.0f);
 				Invoke("UpdateText", 7.0f);
@@ -234,6 +240,7 @@ public class DialogueManager : MonoBehaviour
 				if(!tutorialrepeat)
 				{
 					Invoke("UpdateText", 3.0f);
+					Invoke("playInvokeable", 3.0f);
 					Invoke("increment", 4.0f);
 					Gamemode.gamemode.Invoke("setComboInvokable", 8.0f);
 					PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
@@ -308,5 +315,10 @@ public class DialogueManager : MonoBehaviour
 		setDialogueCounter(0);
 		setTutorialCounter(0);
 		hideRepeatButtons();
+	}
+	
+	public void playInvokeable()
+	{
+		FindObjectOfType<AudioManager>().Play(dialoguecounter.ToString()); 
 	}
 }

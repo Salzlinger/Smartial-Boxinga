@@ -3331,6 +3331,245 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1954327091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954327093}
+  - component: {fileID: 1954327092}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1954327092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954327091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e8960cd4919f48841ea78985a1331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Ambient
+    clip: {fileID: 8300000, guid: 8b1c98b0dc5f16a42b44ef1cbef3c64f, type: 3}
+    volume: 0.005
+    loop: 1
+    source: {fileID: 0}
+  - name: MenuOST
+    clip: {fileID: 8300000, guid: 4f43a8c690fdb934687bd75088ff849a, type: 3}
+    volume: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - name: FightOST
+    clip: {fileID: 8300000, guid: 8e462b6b024b6cd4c8e8bf6ec0007ef4, type: 3}
+    volume: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - name: Hit1
+    clip: {fileID: 8300000, guid: fc829d06f14b49e46a7f10479e59e55b, type: 3}
+    volume: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit2
+    clip: {fileID: 8300000, guid: 97c334ebdd56e3b4fbfedc682e6004ab, type: 3}
+    volume: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit3
+    clip: {fileID: 8300000, guid: 1e1bc1e806142ca4aaf46ef5b1944d96, type: 3}
+    volume: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: 16
+    clip: {fileID: 8300000, guid: a4d26ddb20baa5a41b1f6f459a117cad, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 17
+    clip: {fileID: 8300000, guid: b3c5a53c69b268945aa0b9833e0ff13a, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 18
+    clip: {fileID: 8300000, guid: 2e4f65bad4a739e43a5305871a0bd414, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 19
+    clip: {fileID: 8300000, guid: f0fda9a6ba4414c4a9f31d5feca3892f, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 20
+    clip: {fileID: 8300000, guid: ad585a2cff3393446827cf6a46057ef5, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 21
+    clip: {fileID: 8300000, guid: 3dd56f36ad379904d9fb5227c8d4d886, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 22
+    clip: {fileID: 8300000, guid: b3d59d647d0d1f940bdd08bebfbe937b, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 23
+    clip: {fileID: 8300000, guid: d2dc008b7caf72f4494db077a49f7543, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 24
+    clip: {fileID: 8300000, guid: 65e532771fd27a84ca025d093bb55a4f, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 25
+    clip: {fileID: 8300000, guid: f2fceb2ffc7f1c5448d0c95b1b002b28, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 26
+    clip: {fileID: 8300000, guid: b273dc421e012e94d9a48a636148aa1c, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 27
+    clip: {fileID: 8300000, guid: 14d118d0ddd1e7b4680ba51f9dc1d376, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 28
+    clip: {fileID: 8300000, guid: 43f487e654496ca4b90907ad57d721bd, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 29
+    clip: {fileID: 8300000, guid: 32e1d90d0afad074cb973633bb02eda0, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 30
+    clip: {fileID: 8300000, guid: 17deebe937f94b244bae050932ad9dd0, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 31
+    clip: {fileID: 8300000, guid: ddba3928f2c74a74b912e26fca61f8a8, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 32
+    clip: {fileID: 8300000, guid: 5bbbf0d5f193afa45897be35e276eb17, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 33
+    clip: {fileID: 8300000, guid: 6da959c3cdb3fc44f93cee02d833d38a, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 1
+    clip: {fileID: 8300000, guid: be6d5bd566dc14f4895960b6857c1161, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 2
+    clip: {fileID: 8300000, guid: 994540cea2aecc74dac2311d67ee2429, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 3
+    clip: {fileID: 8300000, guid: e5ddc4dd1783e2a40be1ab009cc35b92, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 4
+    clip: {fileID: 8300000, guid: e45dfaa033c873741a2f48959051c4aa, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 5
+    clip: {fileID: 8300000, guid: b36bf3cd247820747b1d05d14b11c00a, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 6
+    clip: {fileID: 8300000, guid: 4ec4b1e26d0934c4883952cb7a15d034, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 7
+    clip: {fileID: 8300000, guid: bdfa019300a1c6940b8188f951138f93, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 8
+    clip: {fileID: 8300000, guid: 871ac038f08d32349bc204d234042cdb, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 9
+    clip: {fileID: 8300000, guid: 4d6cca39da9d9e14d93d0b18c7896b97, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 10
+    clip: {fileID: 8300000, guid: f8ec9e591d3bd6e4c873fa55e59f2bbd, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 11
+    clip: {fileID: 8300000, guid: 683dc23f91847bb4ea72add26faf69fb, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 12
+    clip: {fileID: 8300000, guid: 3dbd24302b923904b81c816d463b3fd4, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 13
+    clip: {fileID: 8300000, guid: 8f1ef91b9a1ab8d44af29263a947b9c3, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 14
+    clip: {fileID: 8300000, guid: 86126cbc61463df4689175da62726e43, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: 15
+    clip: {fileID: 8300000, guid: 5a04d8be1b7c535408282c2ff58eb4d4, type: 3}
+    volume: 0.2
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1954327093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954327091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.046, y: 7.027, z: -2.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1986097595
 GameObject:
   m_ObjectHideFlags: 0
