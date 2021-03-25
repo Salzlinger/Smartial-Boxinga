@@ -10,6 +10,7 @@ public class Fist : MonoBehaviour
 	
     private void OnTriggerEnter(Collider other)
     {
+		playHitSound();
 		if (other.gameObject.CompareTag("PreCollider"))
 		{
 			lastHit = other.gameObject;
@@ -36,5 +37,26 @@ public class Fist : MonoBehaviour
 				ComboChecker.combochecker.bullseye();
             }
         }
+       
+    }
+    
+
+    private void playHitSound()
+    {
+        string[] soundnames = { "Hit1", "Hit2", "Hit3" };
+        int r = Random.Range(0, 3);
+
+        FindObjectOfType<AudioManager>().Play(soundnames[r]);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 }

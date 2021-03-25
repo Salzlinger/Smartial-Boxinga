@@ -16,6 +16,12 @@ public class Gamemode : MonoBehaviour
     {
         gamemode = this;
     }
+	
+	public void Start()
+	{
+		//setGamemodeID(0);
+
+	}
 
     public void setGamemodeID(int id)
     {
@@ -66,6 +72,8 @@ public class Gamemode : MonoBehaviour
 	public void enduranceStart()
 	{
 		gamemodeEnd(0);
+		FindObjectOfType<AudioManager>().Stop("MenuOST");
+		FindObjectOfType<AudioManager>().Play("FightOST");
 		// targets[1].SetActive(false);
 		DialogueManager.dmanager.Invoke("UpdateText", 4.5f);
 		Invoke("gameStart", 5.0f);
@@ -82,7 +90,6 @@ public class Gamemode : MonoBehaviour
 
     private int[] generateComboList()
     {
-
         if (gamemodeid == 0)
         {
 			var list = new List<int>();

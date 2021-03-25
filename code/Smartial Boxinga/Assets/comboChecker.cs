@@ -43,6 +43,8 @@ public class ComboChecker : MonoBehaviour
     // entfernt das getroffene Ziel aus dem Array
     public void bullseye ()
     {
+
+
         for (int i = 0; i < combolist.Length - 1; i++)
         {
             combolist[i] = combolist[i + 1];

@@ -12,8 +12,14 @@ public class PlayingField : MonoBehaviour
     public void Awake()
     {
         playingfield = this;
-
         hideTargets();
+    }
+
+	
+    public void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("Ambient"); //Fängt an Ambiente Sound abzuspielen
+        FindObjectOfType<AudioManager>().Play("MenuOST"); 
     }
 
     public void showNextTarget()
@@ -39,7 +45,4 @@ public class PlayingField : MonoBehaviour
             targets[i].SetActive(false);
         }
 	}
-
-
-
 }
