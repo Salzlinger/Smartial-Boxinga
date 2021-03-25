@@ -228,7 +228,15 @@ public class DialogueManager : MonoBehaviour
 				Gamemode.gamemode.Invoke("setComboInvokable", 25.5f);
 				PlayingField.playingfield.Invoke("showNextTarget", 25.5f);
 				break;
-			case 18: //19
+			case 8:
+				Invoke("UpdateText", 3.0f);
+				Invoke("increment", 4.0f);
+				Invoke("UpdateText", 7.0f);
+				Invoke("increment", 7.5f);
+				Gamemode.gamemode.Invoke("setComboInvokable", 8.0f);
+				PlayingField.playingfield.Invoke("showNextTarget", 8.0f);
+				break;
+			case 21: 
 				Invoke("UpdateText", 3.0f);
 				Invoke("increment", 4.0f);
 				Invoke("UpdateText", 7.0f);
@@ -267,23 +275,23 @@ public class DialogueManager : MonoBehaviour
 				break;
 			case 2:
 				tutorialcounter = 1;
-				dialoguecounter = 8;
+				dialoguecounter = 9;
 				break;
 			case 3:
 				tutorialcounter = 2;
-				dialoguecounter = 10;
+				dialoguecounter = 11;
 				break;
 			case 4:
 				tutorialcounter = 3;
-				dialoguecounter = 12;
+				dialoguecounter = 13;
 				break;
 			case 5:
 				tutorialcounter = 4;
-				dialoguecounter = 14;
+				dialoguecounter = 15;
 				break;
 			case 6:
 				tutorialcounter = 5;
-				dialoguecounter = 16;
+				dialoguecounter = 18;
 				break;
 			default:
 				Debug.Log("Default Exit RepeatPunch()");
@@ -320,5 +328,35 @@ public class DialogueManager : MonoBehaviour
 	public void playInvokeable()
 	{
 		FindObjectOfType<AudioManager>().Play(dialoguecounter.ToString()); 
+	}
+	
+	public int tutorialPositionSwitch()
+	{
+		int wherearewe = 0;
+		switch(dialoguecounter)
+		{
+			case 6:
+				wherearewe = 1;
+				break;
+			case 9:
+				wherearewe = 2;
+				break;
+			case 11:
+				wherearewe = 3;
+				break;
+			case 13:
+				wherearewe = 4;
+				break;
+			case 15:
+				wherearewe = 5;
+				break;
+			case 18:
+				wherearewe = 6;
+			break;
+			default:
+				wherearewe = 0;
+				break;
+		}
+		return wherearewe;
 	}
 }

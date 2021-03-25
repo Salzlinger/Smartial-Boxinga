@@ -34,6 +34,10 @@ public class Fist : MonoBehaviour
 					ComboChecker.combochecker.lastHitGood();
 				}
 				other.gameObject.transform.parent.gameObject.SetActive(false);
+				if(DialogueManager.dmanager.tutorialPositionSwitch() != 0)
+				{
+					PlayingField.playingfield.switchRawImage();
+				}
 				ComboChecker.combochecker.bullseye();
             }
         }
